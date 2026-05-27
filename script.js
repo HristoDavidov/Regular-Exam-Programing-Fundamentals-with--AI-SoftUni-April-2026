@@ -4,7 +4,7 @@ let chart = null;
 function initChart() {
     const ctx = document.getElementById('barChart').getContext('2d');
     
-    chart = new Chart(ctx, {
+    chart = new window.Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
