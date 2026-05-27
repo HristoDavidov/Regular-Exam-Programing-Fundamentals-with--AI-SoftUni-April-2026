@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadPredictor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">◊</span>
+                <span class="logo-text">LeadPredictor</span>
+            </div>
+
+            <!-- Language -->
+            <div class="form-group">
+                <label>Language</label>
+                <select id="language">
+                    <option>🇺🇸 English</option>
+                    <option>🇪🇸 Spanish</option>
+                    <option>🇫🇷 French</option>
+                </select>
+            </div>
+
+            <!-- Currency -->
+            <div class="form-group">
+                <label>Currency</label>
+                <select id="currency">
+                    <option>$ US Dollar</option>
+                    <option>€ Euro</option>
+                    <option>£ British Pound</option>
+                </select>
+            </div>
+
+            <!-- Campaign Start -->
+            <div class="form-group">
+                <label>Campaign Start</label>
+                <input type="date" id="campStart" value="2026-05-08">
+            </div>
+
+            <!-- Campaign End -->
+            <div class="form-group">
+                <label>Campaign End</label>
+                <input type="date" id="campEnd" value="2026-11-04">
+            </div>
+
+            <!-- Total Revenue -->
+            <div class="form-group">
+                <label>Total Revenue</label>
+                <input type="number" id="revenue" value="10000">
+            </div>
+
+            <!-- Avg Order Value -->
+            <div class="form-group">
+                <label>Avg. Order Value</label>
+                <input type="number" id="avgOrder" value="1000">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <!-- Bottom Sliders -->
+            <div class="sliders-section">
+                <div class="slider-group">
+                    <label>Lead Response Rate</label>
+                    <div class="slider-container">
+                        <input type="range" id="leadRate" min="0" max="100" value="40" class="slider">
+                        <span id="leadRateValue" class="slider-value">40.00%</span>
+                    </div>
+                </div>
+
+                <div class="slider-group">
+                    <label>Prospect Response Rate</label>
+                    <div class="slider-container">
+                        <input type="range" id="prospectRate" min="0" max="100" value="20" class="slider">
+                        <span id="prospectRateValue" class="slider-value">20.00%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar (Cards) -->
+        <div class="right-sidebar">
+            <!-- Prospects Card -->
+            <div class="metric-card">
+                <div class="card-header">
+                    <span class="card-icon">📁</span>
+                    <span class="card-title">Prospects</span>
+                </div>
+                <div class="card-percentage">100%</div>
+                <div class="card-number" id="prospectNum">125</div>
+                <div class="card-progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <!-- Leads Card -->
+            <div class="metric-card">
+                <div class="card-header">
+                    <span class="card-icon">👤</span>
+                    <span class="card-title">Leads</span>
+                </div>
+                <div class="card-percentage">20%</div>
+                <div class="card-number" id="leadsNum">25</div>
+                <div class="card-progress">
+                    <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+            </div>
+
+            <!-- Customers Card -->
+            <div class="metric-card">
+                <div class="card-header">
+                    <span class="card-icon">👥</span>
+                    <span class="card-title">Customers</span>
+                </div>
+                <div class="card-percentage">8%</div>
+                <div class="card-number" id="customersNum">10</div>
+                <div class="card-progress">
+                    <div class="progress-bar" style="width: 8%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
