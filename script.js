@@ -7,7 +7,7 @@ function initChart() {
     chart = new window.Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+            labels: ['1', '2', '3', '4', '5', '6'],
             datasets: [
                 {
                     label: 'Prospects',
@@ -15,7 +15,8 @@ function initChart() {
                     backgroundColor: 'rgba(100, 181, 246, 0.6)',
                     borderColor: 'rgba(100, 181, 246, 1)',
                     borderRadius: 4,
-                    borderSkipped: false
+                    borderSkipped: false,
+                    barThickness: 16
                 },
                 {
                     label: 'Leads',
@@ -23,11 +24,13 @@ function initChart() {
                     backgroundColor: 'rgba(129, 199, 132, 0.6)',
                     borderColor: 'rgba(129, 199, 132, 1)',
                     borderRadius: 4,
-                    borderSkipped: false
+                    borderSkipped: false,
+                    barThickness: 16
                 }
             ]
         },
         options: {
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
@@ -54,7 +57,6 @@ function initChart() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 120,
                     ticks: {
                         color: '#90a4ae',
                         font: {
@@ -67,37 +69,26 @@ function initChart() {
                     }
                 },
                 x: {
+                    beginAtZero: true,
+                    max: 120,
                     ticks: {
                         color: '#90a4ae',
                         font: {
                             size: 11
+                        },
+                        callback: function(value) {
+                            return value + ' people';
                         }
                     },
                     grid: {
-                        display: false
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
                     }
                 }
             }
         }
     });
 }
-
-// Slider Event Listeners
-document.getElementById('leadRate').addEventListener('input', function() {
-    document.getElementById('leadRateValue').textContent = this.value + '.00%';
-    updateMetrics();
-});
-
-document.getElementById('prospectRate').addEventListener('input', function() {
-    document.getElementById('prospectRateValue').textContent = this.value + '.00%';
-    updateMetrics();
-});
-
-// Form Input Event Listeners
-document.getElementById('revenue').addEventListener('input', updateMetrics);
-document.getElementById('avgOrder').addEventListener('input', updateMetrics);
-document.getElementById('campStart').addEventListener('change', updateMetrics);
-document.getElementById('campEnd').addEventListener('change', updateMetrics);
 
 // Update Metrics Based on Inputs
 function updateMetrics() {
@@ -128,4 +119,21 @@ function updateMetrics() {
 document.addEventListener('DOMContentLoaded', function() {
     initChart();
     updateMetrics();
+    
+    // Slider Event Listeners
+    document.getElementById('leadRate').addEventListener('input', function() {
+        document.getElementById('leadRateValue').textContent = this.value + '.00%';
+        updateMetrics();
+    });
+
+    document.getElementById('prospectRate').addEventListener('input', function() {
+        document.getElementById('prospectRateValue').textContent = this.value + '.00%';
+        updateMetrics();
+    });
+
+    // Form Input Event Listeners
+    document.getElementById('revenue').addEventListener('input', updateMetrics);
+    document.getElementById('avgOrder').addEventListener('input', updateMetrics);
+    document.getElementById('campStart').addEventListener('change', updateMetrics);
+    document.getElementById('campEnd').addEventListener('change', updateMetrics);
 });
